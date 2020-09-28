@@ -6,6 +6,8 @@ var logger = require("morgan");
 var db = require("./dbconfig/dbconnection");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const dotenv = require("dotenv");
+dotenv.config();
 var app = express();
 
 // view engine setup
@@ -17,10 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
 db.connect((err) => {
   if (err) console.log("connection error" + err);
   else console.log("connected successfully");
 });
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
