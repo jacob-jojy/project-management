@@ -14,9 +14,12 @@ users = [];
 router.get("/", (req, res) => {
   res.render("index");
 });
-/*hashing the user entered password*/
 
-/*router.post("/", (req, res) => {
+/*hashing the user entered password and insert data into database*/
+
+//-------------------------------------------------------------------------------------------------------------/
+
+router.post("/", (req, res) => {
   const hashedPassword = bcrypt.hash(req.body.password, salt, (err, hash) => {
     if (err) throw err;
     const user = { username: req.body.login, password: hash };
@@ -26,9 +29,11 @@ router.get("/", (req, res) => {
         if (err) throw err;
       });
   });
-});*/
+});
 
-/*compare the hashed password and user entered password*/
+/*compare the hashed password and user entered password from database*/
+//-----------------------------------------------------------------------------------------------------------//
+
 router.post("/", (req, res) => {
   var username = req.body.login;
   var password = req.body.password;
