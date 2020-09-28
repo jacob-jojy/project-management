@@ -1,20 +1,15 @@
-const mongo = require("mongodb").MongoClient;
+const mongoose = require('mongoose');
 
-const state = {
-  db: null,
-};
-module.exports.connect = function (con) {
-  const url = "mongodb://localhost:27017";
-  const dbname = "project-management";
+const connect = function () {
+  const url = "mongodb://localhost:27017/project-management";
+  const options = {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true };
 
-  mongo.connect(url, { useUnifiedTopology: true }, (err, data) => {
-    if (err) {
-      return con(err);
-    }
-    state.db = data.db(dbname);
-    con();
-  });
+  mongoose.connect(url, options)
+  .then(async (db,err)=>{
+      if(err)
+          console.log("err connecting to db",err)
+      console.log("connected to DB!!")
+  })
 };
-module.exports.get = function () {
-  return state.db;
-};
+
+module.exports.connect = connect;

@@ -6,6 +6,8 @@ var logger = require("morgan");
 var db = require("./dbconfig/dbconnection");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
+const dotenv = require('dotenv');
+dotenv.config();
 var app = express();
 
 // view engine setup
