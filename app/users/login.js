@@ -1,10 +1,11 @@
-const users = require("./schema");
+const users = require("../../Models/userschema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
 module.exports = async (req, res) => {
   try {
     //validation
+    const { email, password } = req.body;
     if (!req.body.login || !req.body.password)
       return res.status(400).json({
         status: false,
@@ -28,7 +29,8 @@ module.exports = async (req, res) => {
       });
     const token = jwt.sign(
       { userid: user._id, email: user.email },
-      process.env.code
+      process.env.code,
+      { expiresIn: "1d" }
     );
 
     return res.json({
