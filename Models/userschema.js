@@ -20,8 +20,8 @@ const users = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "user",
-    enum: ["user", "supervisor", "admin"],
+    default: "developer",
+    enum: ["developer", "admin"],
   },
   accessToken: {
     type: String,

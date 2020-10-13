@@ -16,7 +16,7 @@ module.exports = async (req, res) => {
       email: req.body.login,
     });
     if (!user)
-      res.status(404).json({
+      return res.status(404).json({
         status: false,
         message: "User does not exist",
       });
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
       process.env.code,
       { expiresIn: "1d" }
     );
-
+    return res.header("auth-token", token).send(token);
     return res.json({
       status: true,
       data: { token },

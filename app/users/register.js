@@ -24,7 +24,7 @@ module.exports = async (req, res) => {
     const user = new users({
       email: req.body.login,
       password: req.body.password,
-      role: role || "user",
+      role: role || "developer",
     });
     const response = await user.save();
 
