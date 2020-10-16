@@ -4,7 +4,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var db = require("./dbconfig/dbconnection");
-var usersRouter = require("./routes/users");
+var usersRouter = require("./routes/user/users");
 var adminRouter = require("./routes/admin/admin");
 const dotenv = require("dotenv");
 dotenv.config();

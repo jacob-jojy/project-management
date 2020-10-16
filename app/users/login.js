@@ -32,7 +32,8 @@ module.exports = async (req, res, next) => {
       process.env.code,
       { expiresIn: "1d" }
     );
-    return res.header("auth-token", token, next());
+    res.header("auth-token", token);
+    next();
   } catch (err) {
     return res.status(400).json({
       status: false,

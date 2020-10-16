@@ -16,15 +16,16 @@ verifyLoggin = (req, res, next) => {
 
 //CHECKING IS ADMIN
 
-isAdmin = (req, res, next) => {
+isAdmin = async (req, res, next) => {
   const token = req.header("auth-token");
   try {
     const user = jwt.verify(token, process.env.code);
     req.user = user;
-    if (!req.user.role == "admin") {
-      return res.status(401).send("Access denied");
-    } else {
+    person = await users.findOne({ _id: req.user.userid });
+    if (person.role == "admin") {
       next();
+    } else {
+      return res.status(401).send("Access denied");
     }
   } catch (error) {
     res.status(400).json({ message: error });

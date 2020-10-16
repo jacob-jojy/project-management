@@ -1,10 +1,11 @@
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 const projectSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-  type: {
+  description: {
     type: String,
   },
   status: {
@@ -12,14 +13,13 @@ const projectSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "developer",
-    enum: ["developer", "admin"],
   },
+  user: [{ type: Schema.Types.ObjectId, ref: "users" }],
   StartDate: {
     type: Date,
     default: Date.now,
   },
-  endtDate: {
+  dueDate: {
     type: Date,
   },
 });
