@@ -2,7 +2,7 @@ const users = require("../../Models/userschema");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-module.exports = async (req, res) => {
+module.exports = async (req, res, next) => {
   try {
     //validation
     const { email, password } = req.body;
@@ -32,11 +32,7 @@ module.exports = async (req, res) => {
       process.env.code,
       { expiresIn: "1d" }
     );
-    return res.header("auth-token", token).send(token);
-    return res.json({
-      status: true,
-      data: { token },
-    });
+    return res.header("auth-token", token, next());
   } catch (err) {
     return res.status(400).json({
       status: false,

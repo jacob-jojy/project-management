@@ -22,9 +22,7 @@ module.exports = async (req, res) => {
 
     //send mail
 
-    const resetURL = `${req.protocol}://${req.get(
-      "host"
-    )}/api/v1/users/resetPassword/${resetToken}`;
+    const resetURL = `${req.protocol}://${req.get("host")}/reset/${resetToken}`;
 
     const message = `Forgote your passsword? Submit a PATCH request with your new password and passwordconfirm to: ${resetURL}.\n If you didn't forget your password, plese ignore this email`;
 

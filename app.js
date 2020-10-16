@@ -5,7 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var db = require("./dbconfig/dbconnection");
 var usersRouter = require("./routes/users");
-var adminRouter = require("./routes/admin");
+var adminRouter = require("./routes/admin/admin");
 const dotenv = require("dotenv");
 dotenv.config();
 var app = express();
@@ -16,6 +16,7 @@ app.set("view engine", "hbs");
 
 app.use(logger("dev"));
 app.use(express.json());
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));

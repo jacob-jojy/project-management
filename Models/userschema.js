@@ -23,6 +23,10 @@ const users = new mongoose.Schema({
     default: "developer",
     enum: ["developer", "admin"],
   },
+  date: {
+    type: Date,
+    default: Date.now,
+  },
   accessToken: {
     type: String,
   },

@@ -312,16 +312,17 @@
         </div>
 
         <!-- Login Form -->
-        <form action="/login" method="POST">
-            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+        <form action="/reset/:token" method="POST">
+
             <input type="text" id="password" class="fadeIn third" name="password" placeholder="password">
+            <input type="text" id="password" class="fadeIn third" name="pwdConfirm" placeholder="password">
             <input type="submit" class="fadeIn fourth" value="Log In">
 
         </form>
 
         <!-- Remind Passowrd -->
         <div id="formFooter">
-            <a class="underlineHover" href="/forgot">Forgot Password?</a>
+            <a class="underlineHover" href="/">Forgot Password?</a>
         </div>
 
     </div>
