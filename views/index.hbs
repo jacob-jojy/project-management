@@ -11,11 +11,22 @@
         {{#each project}}
         <tr>
             <th scope="row">1</th>
-            <td>{{this.name}}</td>
-            <td>{{this.description}}</td>
-
-
+            <td>{{name}}</td>
+            <td>{{description}}</td>
         </tr>
+
         {{/each}}
+
+        <tr>
+            <th scope="row">2</th>
+            {{#each developers}}
+            <td>{{this.email}}</td>
+            {{/each}}
+        </tr>
+
+
+
+
+
     </tbody>
 </table>

@@ -1,7 +1,14 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
+const { stringify } = require("querystring");
 const users = new mongoose.Schema({
+  name: {
+    type: String,
+    lowercase: true,
+    sparse: true,
+    required: true,
+  },
   email: {
     type: String,
     unique: true,
@@ -16,6 +23,9 @@ const users = new mongoose.Schema({
     required: [true, "please enter your password"],
   },
   passwordConfirm: {
+    type: String,
+  },
+  skill: {
     type: String,
   },
   role: {
