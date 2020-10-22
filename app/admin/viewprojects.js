@@ -5,8 +5,9 @@ const users = require("../../Models/userschema");
 module.exports = {
   getAllproject: () => {
     return new Promise(async (resolve, reject) => {
-      let project = await projects.find({}).populate("user");
-      console.log(project);
+      let project = await projects
+        .find({})
+        .populate({ path: "user", select: "-__v -role -password -date" });
       resolve(project);
     });
   },

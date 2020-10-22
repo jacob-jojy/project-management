@@ -9,18 +9,19 @@
     </thead>
     <tbody>
         {{#each project}}
-        <tr>
-            <th scope="row">1</th>
-            <td>{{name}}</td>
-            <td>{{description}}</td>
-        </tr>
-
+        <a href="/login">
+            <tr>
+                <th scope="row">1</th>
+                <td>{{name}}</td>
+                <td>{{description}}</td>
+            </tr>
+        </a>
         {{/each}}
 
         <tr>
             <th scope="row">2</th>
             {{#each developers}}
-            <td>{{this.email}}</td>
+            <td>{{email}}</td>
             {{/each}}
         </tr>
 
